@@ -26,7 +26,7 @@ function calculateBreakup() {
             // taxRate = 0.3;
             var components = [[ctc, 1, 999999999999999, 0.12, 'Employee Provident Fund (EPF)'], 
                            [ctc, 1, 999999999999999, 0.0075, 'Employee State Insurance (ESI)'],
-                           [ctc, 1, 999999999999999, 0.30, 'Variable Pay']
+                           [ctc, 1, 999999999999999, 0.20, 'Variable Pay']
                              ]
             break;
         case 'amsterdam':
