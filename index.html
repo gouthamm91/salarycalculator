@@ -1,4 +1,4 @@
-<!-- Version 1.22 -->
+<!-- Version 1.23 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +94,7 @@ table, td, tr {
             <option value="netherlands">Netherlands</option>
             <option value="france">France</option>
             <option value="india" selected>India</option>
-            <option value="englang">England</option>
+            <option value="england">England</option>
             <option value="poland">Poland</option>
             <option value="USA">USA</option>
         </select>
@@ -286,7 +286,7 @@ function calculateBreakup() {
             currency = '(EUR)';            
             break;
         case 'london':
-        case 'englang':
+        case 'england':
             parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
             components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
                           [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
@@ -375,7 +375,7 @@ function currencyFunc(location) {
             currency = '(EUR)';            
             break;
         case 'london':
-        case 'englang':
+        case 'england':
             parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
             components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
                           [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
