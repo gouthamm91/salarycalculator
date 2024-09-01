@@ -294,9 +294,9 @@ function calculateBreakup() {
     for (c = 0; c < components.length; c++) {
         amt = calculateTax(components[c]);
         componentAmt += Number(amt);
-        componentsStr += '<tr><td>' + components[c][4] + '</td><td>' + amt.toFixed(2) + '</td></tr>';
+        componentsStr += '<tr><td>' + components[c][4] + '</td><td class="amountTd">' + amt.toFixed(2) + '</td></tr>';
     }
-    componentsStr += '<tr><td><b>Total Components</b> </td><td>' + componentAmt.toFixed(2) + '</td></tr>';
+    componentsStr += '<tr><td><b>Total Components</b> </td><td class="amountTd">' + componentAmt.toFixed(2) + '</td></tr>';
     // componentsStr = '<table>' + componentsStr + '</table>'
 
     const netSalary = ctc - tax - componentAmt;
