@@ -81,16 +81,16 @@ table, td, tr {
     <div class="container">
         <h1>CTC Calculator</h1>
         <label for="location">Select Location:</label>
-        <select id="location">
+        <select id="location" value="india" onchange="ctclable.innerHTML = 'Enter CTC ' + currencyFunc(this.value);calculateBreakup();">
             <option value="amsterdam">Amsterdam</option>
             <option value="france">France</option>
             <option value="india">India</option>
             <option value="london">London</option>
             <option value="poland">Poland</option>
-            <option value="new_york">USA</option>
+            <option value="usa">USA</option>
         </select>
 
-        <label for="ctc">Enter CTC:</label>
+        <label id="ctclable" for="ctc">Enter CTC (EUR)</label>
         <input type="number" id="ctc" placeholder="Enter your CTC">
 
 
@@ -242,6 +242,10 @@ function calculateBreakup() {
     const location = document.getElementById('location').value;
     const ctc = parseFloat(document.getElementById('ctc').value);
 
+    var ctclbl = document.getElementById('ctclable')
+
+
+
     if (isNaN(ctc) || ctc <= 0) {
         document.getElementById('result').innerHTML = 'Please enter a valid CTC.';
         return;
@@ -258,18 +262,21 @@ function calculateBreakup() {
             components = [[ctc, 1, 999999999999999, 0.12, 'Employee Provident Fund (EPF)'], 
                           [ctc, 1, 999999999999999, 0.0075, 'Employee State Insurance (ESI)'],
                           [ctc, 1, 999999999999999, variablePay, 'Variable Pay']];
+            currency = '(INR)';
             break;
         case 'amsterdam':
             parameters = [[ctc, 1, 37149, 0.0928], [ctc, 37150, 73031, 0.3693], [ctc, 73031, 999999999999999, 0.495]];
             components = [[ctc, 1, 999999999999999, 0.2765, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.06, 'Pension Contributions'], 
                           [ctc, 1, 999999999999999, 0.07, 'Health Insurance']];
+            currency = '(EUR)';            
             break;
         case 'london':
             parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
             components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
                           [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
                           [ctc, 1, 999999999999999, 0.075, 'Student Loan Repayments']];
+            currency = '(GBP)';
             break;
         case 'france':
         case 'paris':
@@ -277,20 +284,24 @@ function calculateBreakup() {
             components = [[ctc, 1, 999999999999999, 0.22, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.085, 'Pension Contributions'], 
                           [ctc, 1, 999999999999999, 0.08, 'Health Insurance']];
+            currency = '(FF)';
             break;
         case 'poland':
             parameters = [[ctc, 30000, 120000, 0.12], [ctc, 120000, 999999999999999, 0.32]];
             components = [[ctc, 1, 999999999999999, 0.1371, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.0245, 'Labor Fund'], 
                           [ctc, 1, 999999999999999, 0.09, 'Health Insurance']];
+            currency = '(PLN)';
             break;
         case 'washington':
         case 'new_york':
         case 'los_angeles':
+        case 'usa':
             parameters = [[ctc, 1, 999999999999999, 0.0929]];
             components = [[ctc, 1, 999999999999999, 0.062, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.0045, '401(k) Contributions'], 
                           [ctc, 1, 999999999999999, 0.0145, 'Medicare Contributions']];
+            currency = '(USD)'
             break;
         default:
             taxRate = 0;
@@ -329,6 +340,62 @@ function calculateBreakup() {
     `;
 }
 
+function currencyFunc(location) {
+    
+    switch(location) {
+        case 'india':
+            parameters = [[ctc, 300000, 500000, 0.05], [ctc, 500000, 600000, 0.05], [ctc, 600000, 900000, 0.10], [ctc, 900000, 1000000, 0.15], [ctc, 1000000, 1200000, 0.15], [ctc, 1200000, 1500000, 0.20], [ctc, 1500000, 999999999999999, 0.30]];
+            variablePay = document.getElementById('variablePay').value / 100; // Convert percentage to decimal
+            components = [[ctc, 1, 999999999999999, 0.12, 'Employee Provident Fund (EPF)'], 
+                          [ctc, 1, 999999999999999, 0.0075, 'Employee State Insurance (ESI)'],
+                          [ctc, 1, 999999999999999, variablePay, 'Variable Pay']];
+            currency = '(INR)';
+            break;
+        case 'amsterdam':
+            parameters = [[ctc, 1, 37149, 0.0928], [ctc, 37150, 73031, 0.3693], [ctc, 73031, 999999999999999, 0.495]];
+            components = [[ctc, 1, 999999999999999, 0.2765, 'Social Security Contributions'], 
+                          [ctc, 1, 999999999999999, 0.06, 'Pension Contributions'], 
+                          [ctc, 1, 999999999999999, 0.07, 'Health Insurance']];
+            currency = '(EUR)';            
+            break;
+        case 'london':
+            parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
+            components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
+                          [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
+                          [ctc, 1, 999999999999999, 0.075, 'Student Loan Repayments']];
+            currency = '(GBP)';
+            break;
+        case 'france':
+        case 'paris':
+            parameters = [[ctc, 10778, 27478, 0.11], [ctc, 27479, 78570, 0.30], [ctc, 78571, 168994, 0.41], [ctc, 168995, 999999999999999, 0.45]];
+            components = [[ctc, 1, 999999999999999, 0.22, 'Social Security Contributions'], 
+                          [ctc, 1, 999999999999999, 0.085, 'Pension Contributions'], 
+                          [ctc, 1, 999999999999999, 0.08, 'Health Insurance']];
+            currency = '(FF)';
+            break;
+        case 'poland':
+            parameters = [[ctc, 30000, 120000, 0.12], [ctc, 120000, 999999999999999, 0.32]];
+            components = [[ctc, 1, 999999999999999, 0.1371, 'Social Security Contributions'], 
+                          [ctc, 1, 999999999999999, 0.0245, 'Labor Fund'], 
+                          [ctc, 1, 999999999999999, 0.09, 'Health Insurance']];
+            currency = '(PLN)';
+            break;
+        case 'washington':
+        case 'new_york':
+        case 'los_angeles':
+        case 'usa':
+            parameters = [[ctc, 1, 999999999999999, 0.0929]];
+            components = [[ctc, 1, 999999999999999, 0.062, 'Social Security Contributions'], 
+                          [ctc, 1, 999999999999999, 0.0045, '401(k) Contributions'], 
+                          [ctc, 1, 999999999999999, 0.0145, 'Medicare Contributions']];
+            currency = '(USD)'
+            break;
+        default:
+            taxRate = 0;
+            components = [];
+    }
+    return currency
+}
      </script>
 </body>
 </html>
