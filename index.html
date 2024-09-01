@@ -1,4 +1,4 @@
-<!-- Version 1.15 -->
+<!-- Version 1.16 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +86,7 @@ table, td, tr {
 /* } */
      </style>
 </head>
-<body onload="sliderDisplay()">
+<body onload="sliderDisplay(); ctclable.innerHTML = 'Enter CTC ' + currencyFunc(document.getElementById('location').value) + ':';">
     <div class="container">
         <h1>CTC Calculator</h1>
         <label for="location">Select Location:</label>
