@@ -1,4 +1,4 @@
-<!-- Version 1.06 -->
+<!-- Version 1.07 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,9 +96,9 @@ table, td, tr {
 
         <div id="variable-pay-slider" style="display:none;">
         <!-- <div id="variable-pay-slider"> -->
-            <label for="variablePay">Select Variable Pay Rate (%):</label>
+            <label for="variablePay">Select Variable Pay Rate (%):</label><div id="variablePayLabel" style="display: inline-block;">20%</div>
             <input type="range" id="variablePay" min="0" max="50" value="20" oninput="updateVariablePayLabel()">
-            <div id="variablePayLabel">20%</div> 
+            
         </div>
         
         <button style="margin-top: 10px;" onclick="calculateBreakup()">Calculate</button>
