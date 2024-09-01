@@ -33,6 +33,15 @@ label, select, input, button {
     width: 100%;
     margin-bottom: 10px;
     padding: 3px;
+    font-size: 110%;
+}
+
+select {
+    width: 100.5%;
+}
+
+input {
+    width: 96%;
 }
 
 button {
@@ -61,6 +70,11 @@ table, td, tr {
 .amountTd {
     text-align: right;
 }
+
+#variablePayLabel {
+    text-align: center;
+    width: 100%;
+}
      </style>
 </head>
 <body>
@@ -83,11 +97,11 @@ table, td, tr {
         <div id="variable-pay-slider" style="display:none;">
         <!-- <div id="variable-pay-slider"> -->
             <label for="variablePay">Select Variable Pay Rate (%):</label>
-            <input type="range" id="variablePay" min="0" max="100" value="20" oninput="updateVariablePayLabel()">
-            <span id="variablePayLabel">20%</span>
+            <input type="range" id="variablePay" min="0" max="50" value="20" oninput="updateVariablePayLabel()">
+            <div id="variablePayLabel">20%</div> 
         </div>
         
-        <button onclick="calculateBreakup()">Calculate</button>
+        <button style="margin-top: 10px;" onclick="calculateBreakup()">Calculate</button>
 
         <div id="result"></div>
     </div>
