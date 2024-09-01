@@ -1,4 +1,4 @@
-<!-- Version 1.12 -->
+<!-- Version 1.13 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,10 +96,10 @@ table, td, tr {
             <option value="india">India</option>
             <option value="london">London</option>
             <option value="poland">Poland</option>
-            <option value="usa">USA</option>
+            <option value="USA">USA</option>
         </select>
 
-        <label id="ctclable" for="ctc">Enter CTC (EUR)</label>
+        <label id="ctclable" for="ctc">Enter CTC (EUR):</label>
         <input type="number" id="ctc" placeholder="Enter your CTC">
 
 
@@ -309,7 +309,7 @@ function calculateBreakup() {
         case 'washington':
         case 'new_york':
         case 'los_angeles':
-        case 'usa':
+        case 'USA':
             parameters = [[ctc, 1, 999999999999999, 0.0929]];
             components = [[ctc, 1, 999999999999999, 0.062, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.0045, '401(k) Contributions'], 
@@ -396,7 +396,7 @@ function currencyFunc(location) {
         case 'washington':
         case 'new_york':
         case 'los_angeles':
-        case 'usa':
+        case 'USA':
             parameters = [[ctc, 1, 999999999999999, 0.0929]];
             components = [[ctc, 1, 999999999999999, 0.062, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.0045, '401(k) Contributions'], 
