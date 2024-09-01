@@ -91,10 +91,10 @@ table, td, tr {
         <h1>CTC Calculator</h1>
         <label for="location">Select Location:</label>
         <select id="location" value="india" onchange="ctclable.innerHTML = 'Enter CTC ' + currencyFunc(this.value) + ':' ;calculateBreakup();">
-            <option value="amsterdam">Amsterdam</option>
+            <option value="netherlands">Netherlands</option>
             <option value="france">France</option>
             <option value="india" selected>India</option>
-            <option value="london">London</option>
+            <option value="englang">England</option>
             <option value="poland">Poland</option>
             <option value="USA">USA</option>
         </select>
@@ -278,6 +278,7 @@ function calculateBreakup() {
             currency = '(INR)';
             break;
         case 'amsterdam':
+        case 'netherlands':
             parameters = [[ctc, 1, 37149, 0.0928], [ctc, 37150, 73031, 0.3693], [ctc, 73031, 999999999999999, 0.495]];
             components = [[ctc, 1, 999999999999999, 0.2765, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.06, 'Pension Contributions'], 
@@ -285,6 +286,7 @@ function calculateBreakup() {
             currency = '(EUR)';            
             break;
         case 'london':
+        case 'englang':
             parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
             components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
                           [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
@@ -365,6 +367,7 @@ function currencyFunc(location) {
             currency = '(INR)';
             break;
         case 'amsterdam':
+        case 'netherlands':
             parameters = [[ctc, 1, 37149, 0.0928], [ctc, 37150, 73031, 0.3693], [ctc, 73031, 999999999999999, 0.495]];
             components = [[ctc, 1, 999999999999999, 0.2765, 'Social Security Contributions'], 
                           [ctc, 1, 999999999999999, 0.06, 'Pension Contributions'], 
@@ -372,6 +375,7 @@ function currencyFunc(location) {
             currency = '(EUR)';            
             break;
         case 'london':
+        case 'englang':
             parameters = [[ctc, 5000, 37700, 0.20], [ctc, 37701, 150000, 0.45], [ctc, 150000, 999999999999999, 0.45]];
             components = [[ctc, 1, 999999999999999, 0.07, 'National Insurance Contributions (NICs)'], 
                           [ctc, 1, 999999999999999, 0.05, 'Pension Contributions'], 
