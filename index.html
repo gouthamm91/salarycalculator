@@ -97,7 +97,7 @@ table, td, tr {
 
         <div id="variable-pay-slider" style="display:none;">
         <!-- <div id="variable-pay-slider"> -->
-            <label for="variablePay">Select Variable Pay Rate (%):</label><div id="variablePayLabel" style="display: inline-block;">20%</div>
+            <label id="variablePayLabel" for="variablePay">Select Variable Pay Rate: 20%</label>
             <input type="range" id="variablePay" min="0" max="50" value="20" oninput="updateVariablePayLabel()">
             
         </div>
@@ -225,7 +225,7 @@ document.getElementById('location').addEventListener('change', function() {
 
 function updateVariablePayLabel() {
     const variablePay = document.getElementById('variablePay').value;
-    document.getElementById('variablePayLabel').innerText = variablePay + '%';
+    document.getElementById('variablePayLabel').innerText = 'Select Variable Pay Rate: ' + variablePay + '%';
 }
 
 function calculateTax(args) {
