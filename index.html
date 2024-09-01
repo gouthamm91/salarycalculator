@@ -1,4 +1,4 @@
-<!-- Version 1.11 -->
+<!-- Version 1.12 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,11 +86,11 @@ table, td, tr {
 /* } */
      </style>
 </head>
-<body>
+<body onload="sliderDisplay()">
     <div class="container">
         <h1>CTC Calculator</h1>
         <label for="location">Select Location:</label>
-        <select id="location" value="india" onchange="ctclable.innerHTML = 'Enter CTC ' + currencyFunc(this.value);calculateBreakup();">
+        <select id="location" value="india" onchange="ctclable.innerHTML = 'Enter CTC ' + currencyFunc(this.value);calculateBreakup() + ':';">
             <option value="amsterdam">Amsterdam</option>
             <option value="france">France</option>
             <option value="india">India</option>
@@ -223,12 +223,16 @@ table, td, tr {
 //     `;
 // }
 
-document.getElementById('location').addEventListener('change', function() {
-    if (this.value === 'india') {
+function sliderDisplay() {
+    if (document.getElementById('location').value === 'india') {
         document.getElementById('variable-pay-slider').style.display = 'block';
     } else {
         document.getElementById('variable-pay-slider').style.display = 'none';
     }
+}
+
+document.getElementById('location').addEventListener('change', function() {
+    sliderDisplay()
 });
 
 function updateVariablePayLabel() {
