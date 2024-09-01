@@ -57,6 +57,10 @@ table, td, tr {
     border: 1px solid gray;
     border-collapse: collapse;
 }
+
+.amountTd {
+    text-align: right;
+}
      </style>
 </head>
 <body>
@@ -290,9 +294,9 @@ function calculateBreakup() {
     for (c = 0; c < components.length; c++) {
         amt = calculateTax(components[c]);
         componentAmt += Number(amt);
-        componentsStr += '<tr><td>' + components[c][4] + '</td><td>' + Math.round(Number(amt), 2) + '</td></tr>';
+        componentsStr += '<tr><td>' + components[c][4] + '</td><td>' + amt.toFixed(2) + '</td></tr>';
     }
-    componentsStr += '<tr><td><b>Total Components</b> </td><td>' + Math.round(componentAmt) + '</td></tr>';
+    componentsStr += '<tr><td><b>Total Components</b> </td><td>' + componentAmt.toFixed(2) + '</td></tr>';
     // componentsStr = '<table>' + componentsStr + '</table>'
 
     const netSalary = ctc - tax - componentAmt;
@@ -301,12 +305,12 @@ function calculateBreakup() {
     document.getElementById('result').innerHTML = `
         <h2>Breakup for ${location.charAt(0).toUpperCase() + location.slice(1).replace('_', ' ')}</h2>
         <table>
-        <tr><td>Gross CTC</td><td>${ctc.toFixed(2)}</td></tr>
-        <tr><td>Tax Deducted</td><td>${tax.toFixed(2)}</td></tr>
-        <tr><td><b>Components</b></td><td></td></tr> 
+        <tr><td>Gross CTC</td><td class="amountTd">${ctc.toFixed(2)}</td></tr>
+        <tr><td>Tax Deducted</td><td class="amountTd">${tax.toFixed(2)}</td></tr>
+        <tr><td><b>Components</b></td><td class="amountTd"></td></tr> 
         ${componentsStr}
-        <tr><td>Net Annual Salary</td><td>${netSalary.toFixed(2)}</td></tr>
-        <tr><td>Net Monthly Salary</td><td>${monthlySalary.toFixed(2)}</td></tr>
+        <tr><td>Net Annual Salary</td><td class="amountTd">${netSalary.toFixed(2)}</td></tr>
+        <tr><td>Net Monthly Salary</td><td class="amountTd">${monthlySalary.toFixed(2)}</td></tr>
         </table>
     `;
 }
